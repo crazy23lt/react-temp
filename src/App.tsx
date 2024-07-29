@@ -1,11 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/*
+ * @Author: liut
+ * @Date: 2024-07-29 09:08:50
+ * @LastEditors: liut
+ * @LastEditTime: 2024-07-29 15:09:43
+ * 2394630102@qq.com
+ * Copyright (c) 2024 by 刘涛, All Rights Reserved.
+ */
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+// import "./App.scss";
+import RouterView from "@/router";
+import { ConfigProvider } from "antd";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function _App() {
+  const [count, setCount] = useState(0);
   return (
     <>
       <div>
@@ -29,7 +38,13 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
-
-export default App
+const App: React.FC = () => {
+  return (
+    <ConfigProvider theme={{ cssVar: true }}>
+      <RouterView />
+    </ConfigProvider>
+  );
+};
+export default App;
