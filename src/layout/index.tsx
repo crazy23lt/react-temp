@@ -13,7 +13,7 @@ import { Outlet } from "react-router-dom";
 const LayoutView: React.FC = () => {
 	const [collapsed, setCollapsed] = useState(false);
 	const {
-		token: { colorBgContainer, borderRadiusLG },
+		token: { colorBgContainer, borderRadiusLG }
 	} = theme.useToken();
 	return (
 		<Layout style={{ height: "100vh" }}>
@@ -30,7 +30,7 @@ const LayoutView: React.FC = () => {
 						style={{
 							fontSize: "16px",
 							width: 64,
-							height: 64,
+							height: 64
 						}}
 					/>
 				</Layout.Header>
@@ -40,7 +40,7 @@ const LayoutView: React.FC = () => {
 						padding: 24,
 						minHeight: 280,
 						background: colorBgContainer,
-						borderRadius: borderRadiusLG,
+						borderRadius: borderRadiusLG
 					}}
 				>
 					<Outlet />
