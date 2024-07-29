@@ -1,4 +1,4 @@
 const HomeView: React.FC = () => {
-	return <>Home</>;
-};
-export default HomeView;
+	return <>Home</>
+}
+export default HomeView

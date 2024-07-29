@@ -7,6 +7,6 @@
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
 const NotFoundView: React.FC = () => {
-	return <>NotFound</>;
-};
-export default NotFoundView;
+	return <>NotFound</>
+}
+export default NotFoundView

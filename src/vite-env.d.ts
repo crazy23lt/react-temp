@@ -7,4 +7,4 @@
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
 /// <reference types="vite/client" />
-declare const VITE_BASE_URL: string;
+declare const VITE_BASE_URL: string

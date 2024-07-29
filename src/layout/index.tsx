@@ -6,15 +6,15 @@
  * 2394630102@qq.com
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons"
+import { Button, Layout, Menu, theme } from "antd"
+import { useState } from "react"
+import { Outlet } from "react-router-dom"
 const LayoutView: React.FC = () => {
-	const [collapsed, setCollapsed] = useState(false);
+	const [collapsed, setCollapsed] = useState(false)
 	const {
 		token: { colorBgContainer, borderRadiusLG }
-	} = theme.useToken();
+	} = theme.useToken()
 	return (
 		<Layout style={{ height: "100vh" }}>
 			<Layout.Sider trigger={null} collapsible collapsed={collapsed}>
@@ -47,6 +47,6 @@ const LayoutView: React.FC = () => {
 				</Layout.Content>
 			</Layout>
 		</Layout>
-	);
-};
-export default LayoutView;
+	)
+}
+export default LayoutView

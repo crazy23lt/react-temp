@@ -6,11 +6,11 @@
  * 2394630102@qq.com
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
-import LayoutView from "@/layout";
-import AboutView from "@/views/about";
-import HomeView from "@/views/home";
-import NotFoundView from "@/views/notFound";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LayoutView from "@/layout"
+import AboutView from "@/views/about"
+import HomeView from "@/views/home"
+import NotFoundView from "@/views/notFound"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
 		]
 	},
 	{ path: "*", element: <NotFoundView /> }
-]);
+])
 const RouterView: React.FC = () => {
-	return <RouterProvider router={router} />;
-};
-export default RouterView;
+	return <RouterProvider router={router} />
+}
+export default RouterView

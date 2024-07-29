@@ -2,7 +2,7 @@
  * @Author: liut
  * @Date: 2024-07-29 09:08:50
  * @LastEditors: liut
- * @LastEditTime: 2024-07-29 17:02:30
+ * @LastEditTime: 2024-07-29 17:49:56
  * 2394630102@qq.com
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
@@ -12,7 +12,7 @@ module.exports = {
 	extends: [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:react-hooks/recommended",
+		"plugin:react-hooks/recommended"
 	],
 	ignorePatterns: ["dist", ".eslintrc.cjs"],
 	parser: "@typescript-eslint/parser",
@@ -20,8 +20,10 @@ module.exports = {
 	rules: {
 		"react-refresh/only-export-components": [
 			"warn",
-			{ allowConstantExport: true },
+			{ allowConstantExport: true }
 		],
 		semi: ["error", "never"],
-	},
+		"no-console": process.env.NODE_ENV === "production" ? "error" : "warn",
+		"no-debugger": process.env.NODE_ENV === "production" ? "error" : "warn"
+	}
 };
