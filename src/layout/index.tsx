@@ -6,15 +6,16 @@
  * 2394630102@qq.com
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons"
-import { Button, Layout, Menu, theme } from "antd"
-import { useState } from "react"
-import { Outlet } from "react-router-dom"
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Button, Flex, Layout, Menu, theme } from "antd";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import styles from "./index.module.scss";
 const LayoutView: React.FC = () => {
-	const [collapsed, setCollapsed] = useState(false)
+	const [collapsed, setCollapsed] = useState(false);
 	const {
 		token: { colorBgContainer, borderRadiusLG }
-	} = theme.useToken()
+	} = theme.useToken();
 	return (
 		<Layout style={{ height: "100vh" }}>
 			<Layout.Sider trigger={null} collapsible collapsed={collapsed}>
@@ -23,16 +24,15 @@ const LayoutView: React.FC = () => {
 			</Layout.Sider>
 			<Layout>
 				<Layout.Header style={{ padding: 0, background: colorBgContainer }}>
-					<Button
-						type="text"
-						icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-						onClick={() => setCollapsed(!collapsed)}
-						style={{
-							fontSize: "16px",
-							width: 64,
-							height: 64
-						}}
-					/>
+					<Flex>
+						<Button
+							type="text"
+							icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+							onClick={() => setCollapsed(!collapsed)}
+							className={styles.trigger_btn}
+						/>
+						<Menu theme="dark" mode="horizontal" items={[]} />
+					</Flex>
 				</Layout.Header>
 				<Layout.Content
 					style={{
@@ -47,6 +47,6 @@ const LayoutView: React.FC = () => {
 				</Layout.Content>
 			</Layout>
 		</Layout>
-	)
-}
-export default LayoutView
+	);
+};
+export default LayoutView;

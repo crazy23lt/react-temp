@@ -10,8 +10,8 @@
 // import reactLogo from "./assets/react.svg"
 // import viteLogo from "/vite.svg"
 // import "./App.scss";
-import RouterView from "@/router"
-import { ConfigProvider } from "antd"
+import RouterView from "@/router";
+import { ConfigProvider } from "antd";
 
 // function _App() {
 // 	const [count, setCount] = useState(0)
@@ -45,6 +45,6 @@ const App: React.FC = () => {
 		<ConfigProvider theme={{ cssVar: true }}>
 			<RouterView />
 		</ConfigProvider>
-	)
-}
-export default App
+	);
+};
+export default App;

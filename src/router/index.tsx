@@ -10,8 +10,30 @@ import LayoutView from "@/layout";
 import AboutView from "@/views/about";
 import GraphView from "@/views/graph";
 import HomeView from "@/views/home";
+import LoginView from "@/views/login/login";
 import NotFoundView from "@/views/notFound";
+import ZustandView from "@/views/zustand";
+import { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// 路由懒加载
+const lazyload = () => {
+	return <Suspense fallback></Suspense>;
+};
+enum UserLevel {
+	ADMIN,
+	SUPER_ADMIN,
+	MEMBER
+}
+export interface IRouteObject {
+	children?: IRouteObject[];
+	element?: React.ReactNode;
+	index?: boolean;
+	path: string;
+	meta?: {
+		auth?: boolean;
+		role?: UserLevel;
+	};
+}
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -19,8 +41,13 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomeView /> },
 			{ path: "/about", element: <AboutView /> },
-			{ path: "/graph", element: <GraphView /> }
+			{ path: "/graph", element: <GraphView /> },
+			{ path: "/zustand", element: <ZustandView /> }
 		]
+	},
+	{
+		path: "/login",
+		element: <LoginView />
 	},
 	{ path: "*", element: <NotFoundView /> }
 ]);

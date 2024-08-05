@@ -11,7 +11,7 @@ const GraphView: React.FC = () => {
 						<div className={styles.title}>集群信息</div>
 						<Flex justify="center" align="center" flex={1} gap={12}>
 							<GraphGuageMini name={"内存总量(核)"} value={31 / 100} />
-							<GraphGuageMain name={"CPU总量(核)"} value={50} />
+							<GraphGuageMain name={"CPU总量(核)"} value={12} />
 							<GraphGuageMini name={"CPU总量(核)"} value={44 / 100} />
 						</Flex>
 					</Flex>

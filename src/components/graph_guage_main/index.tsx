@@ -158,7 +158,7 @@ const GraphGuageMain: React.FC<IProps> = ({ name, value, width = 200, height = 2
 	}, [opts]);
 	return (
 		<Flex vertical align="center">
-			<div id={id} className={styles.bg} style={{ width, height }} />
+			<div id={id} style={{ width, height }} />
 			<div className={styles.title}>{name}</div>
 		</Flex>
 	);

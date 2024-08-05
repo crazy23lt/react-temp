@@ -18,7 +18,9 @@ export type ResponseLogin = {
 export const fetchLoginApi = (params: RequestLogin) => {
 	return POST<ResponseLogin>("/api/login", params);
 };
-
+export const fetchAccountApi = () => {
+	return GET("/api/account");
+};
 export const fetchLogoutApi = () => {
 	return GET("/liuttt");
 };

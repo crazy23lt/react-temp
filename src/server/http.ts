@@ -7,6 +7,8 @@
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
 import { getAuthorization } from "@/utils/tool";
+import { message } from "antd";
+import { MessageType } from "antd/es/message/interface";
 import axios, {
 	AxiosInstance,
 	AxiosRequestConfig,
@@ -19,6 +21,17 @@ type Result<T> = {
 	message: string;
 	result: T;
 };
+
+type ToastType = {
+	type: "warning" | "error" | "success";
+	content: string;
+};
+let msg: MessageType | null = null;
+const toast = ({ type, content }: ToastType) => {
+	msg = message[type](content, () => {
+		msg = null;
+	});
+};
 class Http {
 	public instance: AxiosInstance;
 	public baseConfig: AxiosRequestConfig = {
@@ -30,7 +43,6 @@ class Http {
 		// request 拦截函数
 		this.instance.interceptors.request.use(
 			(config: InternalAxiosRequestConfig) => {
-				console.log(config);
 				const access = getAuthorization();
 				if (access) {
 					config.headers.Authorization = access.Authorization.Authorization;
@@ -43,8 +55,13 @@ class Http {
 		);
 		// reponse 拦截函数
 		this.instance.interceptors.response.use(
-			(res: AxiosResponse) => {
-				return res;
+			(response: AxiosResponse) => {
+				const { data } = response;
+				toast({
+					type: data.code === 0 ? "success" : "warning",
+					content: data.message
+				});
+				return data;
 			},
 			(err: any) => {
 				return Promise.reject(err);
@@ -54,20 +71,20 @@ class Http {
 	public request(config: AxiosRequestConfig): Promise<AxiosResponse> {
 		return this.instance.request(config);
 	}
-	public get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+	public get<T>(url: string, config?: AxiosRequestConfig): Promise<Result<T>> {
 		return this.instance.request(Object.assign({ url, method: "GET" }, config));
 	}
-	public post<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+	public post<T>(url: string, config?: AxiosRequestConfig): Promise<Result<T>> {
 		return this.instance.request(Object.assign({ url, method: "POST" }, config));
 	}
 	public put<T>(
 		url: string,
 		data?: Record<string, any>,
 		config?: AxiosRequestConfig
-	): Promise<AxiosResponse<Result<T>>> {
+	): Promise<Result<T>> {
 		return this.instance.put(url, data, config);
 	}
-	public delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+	public delete<T>(url: string, config?: AxiosRequestConfig): Promise<Result<T>> {
 		return this.instance.delete(url, config);
 	}
 }

@@ -10,7 +10,6 @@ import { Flex } from "antd";
 import * as echarts from "echarts";
 import styles from "./index.module.scss";
 import { useEffect } from "react";
-import picture from "@/assets/images/1.png";
 import bg from "@/assets/images/bg.png";
 
 const AboutView: React.FC = () => {
