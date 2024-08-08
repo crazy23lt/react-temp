@@ -35,7 +35,8 @@ const toast = ({ type, content }: ToastType) => {
 class Http {
 	public instance: AxiosInstance;
 	public baseConfig: AxiosRequestConfig = {
-		baseURL: import.meta.env.VITE_BASE_URL
+		baseURL: import.meta.env.VITE_BASE_URL,
+		responseType: "json"
 	};
 	constructor(config: AxiosRequestConfig) {
 		// 初始实例化
@@ -58,8 +59,8 @@ class Http {
 			(response: AxiosResponse) => {
 				const { data } = response;
 				toast({
-					type: data.code === 0 ? "success" : "warning",
-					content: data.message
+					type: data.code === 200 ? "success" : "warning",
+					content: data.msg
 				});
 				return data;
 			},

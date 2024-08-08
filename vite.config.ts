@@ -15,7 +15,7 @@ import mockDevServerPlugin from "vite-plugin-mock-dev-server";
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd());
 	return {
-		plugins: [react(), mockDevServerPlugin()],
+		plugins: [react()],
 		define: { VITE_BASE_URL: JSON.stringify(env.VITE_BASE_URL) },
 		resolve: {
 			alias: {
@@ -24,7 +24,11 @@ export default defineConfig(({ mode }) => {
 		},
 		server: {
 			proxy: {
-				"^/api": "http://example.com/"
+				"/express_api": {
+					target: "http://localhost:3000",
+					changeOrigin: true,
+					// rewrite: path => path.replace(/^\/express_api/, "express_api")
+				}
 			}
 		}
 	};

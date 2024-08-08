@@ -6,18 +6,36 @@
  * 2394630102@qq.com
  * Copyright (c) 2024 by 刘涛, All Rights Reserved.
  */
+import { PostApi } from "@/api";
+import { fetchExpressCookieApi } from "@/api/express";
 import { fetchLoginApi } from "@/api/login";
 import { Button, Flex, Select } from "antd";
 
 const HomeView: React.FC = () => {
 	const loginEvent = async () => {
 		let ret = await fetchLoginApi({ username: "liut", password: "Tq112211" });
-		console.log(ret.data.result);
 	};
 	const logoutEvent = () => {};
 	const handleChange = () => {};
+	const expressCoookie = () => {
+		fetchExpressCookieApi();
+	};
+	const createUrlencoded = () => {
+		const data = new URLSearchParams();
+		data.append("emial", "2394630102@qq.com");
+		data.append("password", "7777777");
+		PostApi.fetchExpressPostUrlencodedApi(data).then(res => {
+			console.log(res);
+		});
+	};
 	return (
 		<Flex gap="small" wrap>
+			<Button type="primary" onClick={createUrlencoded}>
+				application/x-www-form-urlencoded
+			</Button>
+			<Button type="primary" onClick={expressCoookie}>
+				express cookie
+			</Button>
 			<Button type="primary" onClick={loginEvent}>
 				Login Button
 			</Button>
