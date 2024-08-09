@@ -58,10 +58,13 @@ class Http {
 		this.instance.interceptors.response.use(
 			(response: AxiosResponse) => {
 				const { data } = response;
-				toast({
-					type: data.code === 200 ? "success" : "warning",
-					content: data.msg
-				});
+				const isJson = response.headers["Content-Type"]?.toString().includes("application/json");
+				if (isJson) {
+					toast({
+						type: data.code === 200 ? "success" : "warning",
+						content: data.msg
+					});
+				}
 				return data;
 			},
 			(err: any) => {
@@ -78,15 +81,14 @@ class Http {
 	public post<T>(url: string, config?: AxiosRequestConfig): Promise<Result<T>> {
 		return this.instance.request(Object.assign({ url, method: "POST" }, config));
 	}
-	public put<T>(
-		url: string,
-		data?: Record<string, any>,
-		config?: AxiosRequestConfig
-	): Promise<Result<T>> {
-		return this.instance.put(url, data, config);
+	public put<T>(url: string, config?: AxiosRequestConfig): Promise<Result<T>> {
+		return this.instance.request(Object.assign({ url, method: "PUT" }, config));
 	}
 	public delete<T>(url: string, config?: AxiosRequestConfig): Promise<Result<T>> {
-		return this.instance.delete(url, config);
+		return this.instance.request(Object.assign({ url, method: "DELETE" }, config));
+	}
+	public upload<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+		return this.instance.request(Object.assign({ url, method: "POST" }, config));
 	}
 }
 export default Http;

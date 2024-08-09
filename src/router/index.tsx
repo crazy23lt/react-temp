@@ -12,6 +12,7 @@ import GraphView from "@/views/graph";
 import HomeView from "@/views/home";
 import LoginView from "@/views/login/login";
 import NotFoundView from "@/views/notFound";
+import SettingView from "@/views/setting";
 import ZustandView from "@/views/zustand";
 import { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -42,7 +43,8 @@ const router = createBrowserRouter([
 			{ index: true, element: <HomeView /> },
 			{ path: "/about", element: <AboutView /> },
 			{ path: "/graph", element: <GraphView /> },
-			{ path: "/zustand", element: <ZustandView /> }
+			{ path: "/zustand", element: <ZustandView /> },
+			{ path: "/setting", element: <SettingView /> }
 		]
 	},
 	{
