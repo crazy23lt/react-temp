@@ -11,7 +11,7 @@ import Http from "./http";
 
 const HttpClient = new Http({});
 export function GET<T>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig) {
-	return HttpClient.post<T>(url, Object.assign(config ?? {}, { params }));
+	return HttpClient.get<T>(url, Object.assign(config ?? {}, { params }));
 }
 export function POST<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig) {
 	return HttpClient.post<T>(url, Object.assign(config ?? {}, { data }));

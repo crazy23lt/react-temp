@@ -8,6 +8,7 @@
  */
 import LayoutView from "@/layout";
 import AboutView from "@/views/about";
+import HttpCacheView from "@/views/cache";
 import GraphView from "@/views/graph";
 import HomeView from "@/views/home";
 import LoginView from "@/views/login/login";
@@ -44,7 +45,8 @@ const router = createBrowserRouter([
 			{ path: "/about", element: <AboutView /> },
 			{ path: "/graph", element: <GraphView /> },
 			{ path: "/zustand", element: <ZustandView /> },
-			{ path: "/setting", element: <SettingView /> }
+			{ path: "/setting", element: <SettingView /> },
+			{ path: "/cache", element: <HttpCacheView /> }
 		]
 	},
 	{

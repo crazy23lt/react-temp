@@ -11,3 +11,4 @@ export * as ExpressApi from "./express";
 export * as KoaApi from "./koa";
 export * as Nestjs from "./nestjs";
 export * as PostApi from "./post";
+export * as CacheApi from "./cache";
