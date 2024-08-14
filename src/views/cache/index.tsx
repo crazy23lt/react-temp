@@ -54,6 +54,12 @@ const HttpCacheView: React.FC = () => {
 		return ret;
 	};
 	const sendXhr = () => {
+		const arr = new Array(3).fill({ num: 12 });
+		const arr1 = Array.from({ length: 3 }, () => ({ num: 12 }));
+		console.log(arr, arr1);
+		arr[0].num = 122;
+		arr1[0].num = 122;
+		console.log(arr, arr1);
 		// CacheApi.fetchHttpCacheApi().then(res => {
 		// 	console.log(res);
 		// });
@@ -64,27 +70,10 @@ const HttpCacheView: React.FC = () => {
 		// console.log(convert(print, 3), print);
 		// console.log(convert(print, 4), print);
 		// console.log(convert(print, 5), print);
-		console.log(reverse(0));
-		console.log(reverse(-0));
 	};
 
 	return (
 		<Row>
-			<Col span={6}>
-				<Button type="primary" onClick={sendXhr}>
-					强缓存
-				</Button>
-			</Col>
-			<Col span={6}>
-				<Button type="primary" onClick={sendXhr}>
-					强缓存
-				</Button>
-			</Col>
-			<Col span={6}>
-				<Button type="primary" onClick={sendXhr}>
-					强缓存
-				</Button>
-			</Col>
 			<Col span={6}>
 				<Button type="primary" onClick={sendXhr}>
 					强缓存
